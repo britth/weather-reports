@@ -1,10 +1,11 @@
 require 'httparty'
+#require 'config/local_env.yml'
 
 #class WeatherReport
   puts 'Enter a five-digit zip code to get a report of current weather conditions in that area'
   zip = gets.chomp
   puts "Entered #{zip}"
-  key = ENV["WU_Key"]
+  key = ENV["WU_KEY"]
   response = HTTParty.get("http://api.wunderground.com/api/#{key}/conditions/q/#{zip}.json")
   # #puts "#{response['current_observation']}"
   # puts response.class
