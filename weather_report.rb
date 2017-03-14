@@ -4,7 +4,7 @@ require 'httparty'
   puts 'Enter a five-digit zip code to get a report of current weather conditions in that area'
   zip = gets.chomp
   puts "Entered #{zip}"
-  key = ENTER KEY HERE
+  key = ENV["WU_Key"]
   response = HTTParty.get("http://api.wunderground.com/api/#{key}/conditions/q/#{zip}.json")
   # #puts "#{response['current_observation']}"
   # puts response.class
