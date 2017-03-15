@@ -1,4 +1,6 @@
 require 'httparty'
+require 'wordsmith-ruby-sdk'
+require './narrative.rb'
 
 class WeatherReport
   include HTTParty
@@ -58,18 +60,11 @@ class WeatherReport
     @error
   end
 
-  def rain_sentence
-    if rain_last_hr.to_f == 0 and rain_today.to_f > 0
-      " There is no precipitation right now, but there has been a total of #{rain_today} in. today."
-    elsif rain_last_hr.to_f > 0 and rain_today.to_f > 0
-      " There has been #{rain_last_hr} in. of precipitation in the last hour for a total of #{rain_today} in. for the day."
-    elsif rain_today.to_f > 0
-      " There has been #{rain_today} in. of precipitation today."
-    end
-  end
-
   def narrative
-    "Weather Report for #{city}, #{state} #{zip} (#{obs_time}):\nConditions are #{weather.downcase}, with a current temperature of #{temperature}.#{rain_sentence} Winds are #{wind.downcase}."
+    json_content = self.to_json
+    data = JSON.parse(json_content)
+    narrative = Narrative.new()
+    narrative.get_content(data)
   end
 
   def self.find(zip)
@@ -92,5 +87,24 @@ class WeatherReport
     else
       raise response.response
     end
+  end
+
+  def as_json(options={})
+      {
+          zip: zip,
+          city: city,
+          state: state,
+          obs_time: obs_time,
+          temperature: temperature,
+          weather: weather,
+          rain_last_hr: rain_last_hr,
+          rain_today: rain_today,
+          wind: wind,
+          error: error.to_s
+      }
+  end
+
+  def to_json(*options)
+      as_json(*options).to_json(*options)
   end
 end

@@ -1,4 +1,5 @@
 require './weather_report.rb'
+require 'json'
 
 puts 'Enter a five-digit zip code to get a report of current weather conditions in that area. Enter "0" if you want to quit'
 zip = gets.chomp
