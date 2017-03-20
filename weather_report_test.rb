@@ -1,11 +1,11 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './weather_report.rb'
+require './current_weather.rb'
 
 class WeatherReportTest < Minitest::Test
   def setup
-    @valid_report = WeatherReport.find('27713')
-    @invalid_report = WeatherReport.find('00000')
+    @valid_report = CurrentWeather.find('27713')
+    @invalid_report = CurrentWeather.find('00000')
   end
 
   def test_initialize

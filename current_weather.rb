@@ -1,7 +1,7 @@
 require 'httparty'
 require './narrative.rb'
 
-class WeatherReport
+class CurrentWeather
   include HTTParty
 
   attr_accessor :zip, :city, :state, :obs_time, :temperature, :weather, :rain_last_hr, :rain_today, :wind, :error
@@ -20,7 +20,7 @@ class WeatherReport
   end
 
   def narrative
-    Narrative.content(self)
+    Narrative.current(self)
   end
 
   def self.weather_report_data(response)

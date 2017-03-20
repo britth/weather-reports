@@ -11,7 +11,10 @@ module Narrative
     end
   end
 
-  def content(data)
+  def current(data)
     "Weather Report for #{data.city}, #{data.state} #{data.zip} (#{data.obs_time}):\nConditions are #{data.weather.downcase}, with a current temperature of #{data.temperature}.#{rain_sentence(data)} Winds are #{data.wind.downcase}."
+  end
+
+  def ten_day(data)
   end
 end
