@@ -16,5 +16,6 @@ module Narrative
   end
 
   def ten_day(data)
+    "10 Day Forecast for #{data.city}, #{data.state} (As of #{data.date}):\n\n#{data.period_1_day}: #{data.period_1_forecast}\n#{data.period_2_day}: #{data.period_2_forecast}\n#{data.period_3_day}: #{data.period_3_forecast}\n#{data.period_4_day}: #{data.period_4_forecast}\n#{data.period_5_day}: #{data.period_5_forecast}\n#{data.period_6_day}: #{data.period_6_forecast}\n#{data.period_7_day}: #{data.period_7_forecast}\n#{data.period_8_day}: #{data.period_8_forecast}\n#{data.period_9_day}: #{data.period_9_forecast}\n#{data.period_10_day}: #{data.period_10_forecast}"
   end
 end

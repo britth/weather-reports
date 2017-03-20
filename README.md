@@ -3,6 +3,6 @@
 This Ruby program uses the Weather Underground API to return current conditions in any US location, based on its zip code.
 ## Getting Started
 * Clone the repository: `git clone https://github.com/britth/weather-reports.git`
-* Set environment variable with API key from [Weather Underground](https://www.wunderground.com/)
+* Set environment variable with your API key from [Weather Underground](https://www.wunderground.com/)
 * Navigate to the repo and run `weather_report_main.rb` in command line
 * Follow command line prompts to get your weather report

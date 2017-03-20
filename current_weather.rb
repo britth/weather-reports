@@ -49,19 +49,4 @@ class CurrentWeather
       raise response.response
     end
   end
-
-  def as_json(options={})
-    {
-      zip: zip,
-      city: city,
-      state: state,
-      obs_time: obs_time,
-      temperature: temperature,
-      weather: weather,
-      rain_last_hr: rain_last_hr.to_f,
-      rain_today: rain_today.to_f,
-      wind: wind,
-      error: error.to_s
-    }
-  end
 end
