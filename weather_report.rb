@@ -1,5 +1,4 @@
 require 'httparty'
-require 'wordsmith-ruby-sdk'
 require './narrative.rb'
 
 class WeatherReport
@@ -21,7 +20,7 @@ class WeatherReport
   end
 
   def narrative
-    Narrative.content(as_json)
+    Narrative.content(self)
   end
 
   def self.weather_report_data(response)
