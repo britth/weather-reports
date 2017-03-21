@@ -14,6 +14,7 @@ class Astronomy
     self.sunrise_min = sunrise_min
     self.sunset_hr = sunset_hr
     self.sunset_min = sunset_min
+    self.error = error
   end
 
   def narrative

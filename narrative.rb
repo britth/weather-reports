@@ -22,4 +22,13 @@ module Narrative
   def astronomy(data)
     "Sunrise and Sunset Times for #{data.city}, #{data.state}:\n\nThe sunrise time is projected to be #{data.sunrise_hr}:#{data.sunrise_min}, and sunset is projected at #{data.sunset_hr}:#{data.sunset_min}"
   end
+
+  def alerts(data)
+    puts "Current alerts for #{data.city}, #{data.state}"
+    if data.alert_count == 0
+      "There are no alerts to report."
+    elsif data.alert_count > 0
+      "There are currently #{data.alert_count} alerts to report, including a #{data.top_alert_type} (#{data.top_alert_message})."
+    end
+  end
 end
