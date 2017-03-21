@@ -26,9 +26,18 @@ module Narrative
   def alerts(data)
     puts "\nCurrent alerts for #{data.city}, #{data.state}"
     if data.alert_count == 0
-      "There are no alerts to report."
+      puts "There are no alerts to report."
     elsif data.alert_count > 0
-      "There are currently #{data.alert_count} alerts to report, including a #{data.top_alert_type} (#{data.top_alert_message})."
+      puts "There are currently #{data.alert_count} alerts to report, including a #{data.top_alert_type} (#{data.top_alert_message})."
+    end
+  end
+
+  def hurricanes(data)
+    puts "Active Hurricanes"
+    if data.hurricanes.count == 0
+      puts "There are no hurricanes to report."
+    elsif data.hurricanes.count > 0
+      puts "There are currently #{data.hurricanes.count} active hurricanes: #{hurricanes}"
     end
   end
 end

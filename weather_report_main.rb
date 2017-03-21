@@ -2,6 +2,7 @@ require './current_weather.rb'
 require './ten_day_forecast.rb'
 require './astronomy.rb'
 require './alert.rb'
+require './current_hurricane.rb'
 
 class WeatherReportMain
 
@@ -37,12 +38,12 @@ class WeatherReportMain
   end
 
   def report_type_start
-    puts "Welcome!\nEnter \"1\" if you want information on current conditions\nEnter \"2\" if you want a 10-day forecast\nEnter \"3\" if you want to know the projected sunrise and sunset times for a location\nEnter \"4\" if you want a list of active alerts\nEnter \"0\" to quit"
+    puts "Welcome!\nEnter \"1\" if you want information on current conditions\nEnter \"2\" if you want a 10-day forecast\nEnter \"3\" if you want to know the projected sunrise and sunset times for a location\nEnter \"4\" if you want a list of active alerts\nEnter \"5\" if you want a list of active hurricanes\nEnter \"0\" to quit"
     gets.chomp
   end
 
   def report_type_next
-    puts "\nEnter \"1\" if you want information on current conditions\nEnter \"2\" if you want a 10-day forecast\nEnter \"3\" if you want to know the project sunrise and sunset times for a location\nEnter \"4\" if you want a list of active alerts\nEnter \"0\" to quit"
+    puts "\nEnter \"1\" if you want information on current conditions\nEnter \"2\" if you want a 10-day forecast\nEnter \"3\" if you want to know the project sunrise and sunset times for a location\nEnter \"4\" if you want a list of active alerts\nEnter \"5\" if you want a list of active hurricanes\nEnter \"0\" to quit"
     gets.chomp
   end
 
@@ -65,8 +66,8 @@ class WeatherReportMain
       elsif report_type == "0"
         puts "Goodbye!"
         break
-      elsif report_type != "0" and report_type != "1" and report_type != "2" and report_type != "3" and report_type != "4"
-        puts "That's not a valid request. Enter \"1\" for current conditions, \"2\" for a 10-day forecast, \"3\" for sunrise/sunset times, \"4\" for active alerts, or \"0\" to quit"
+      elsif report_type != "0" and report_type != "1" and report_type != "2" and report_type != "3" and report_type != "4" and report_type != "5"
+        puts "That's not a valid request. Enter \"1\" for current conditions, \"2\" for a 10-day forecast, \"3\" for sunrise/sunset times, \"4\" for active alerts, \"5\" for active hurricanes, or \"0\" to quit"
         attempts += 1
         report_type = gets.chomp
       elsif report_type == "1"
@@ -84,6 +85,10 @@ class WeatherReportMain
       elsif report_type == "4"
         alert_calls = specific_report_type("list of active alerts", Alert)
         attempts += alert_calls
+        report_type = request_limit(attempts)
+      elsif report_type == "5"
+        CurrentHurricane.new.narrative
+        attempts += 1
         report_type = request_limit(attempts)
       end
     end
