@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './astronomy.rb'
+require '../astronomy.rb'
 
 class AstronomyTest < Minitest::Test
   def setup
@@ -35,5 +35,5 @@ class AstronomyTest < Minitest::Test
 
   def test_valid_zip_code_sunset_min_is_not_null
     refute_nil(@valid_report.sunset_min)
-  end
+  # end
 end

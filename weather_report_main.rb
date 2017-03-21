@@ -68,8 +68,7 @@ class WeatherReportMain
         break
       elsif report_type != "0" and report_type != "1" and report_type != "2" and report_type != "3" and report_type != "4" and report_type != "5"
         puts "That's not a valid request. Enter \"1\" for current conditions, \"2\" for a 10-day forecast, \"3\" for sunrise/sunset times, \"4\" for active alerts, \"5\" for active hurricanes, or \"0\" to quit"
-        attempts += 1
-        report_type = gets.chomp
+        report_type = request_limit(attempts)
       elsif report_type == "1"
         current_calls = specific_report_type("report of current weather conditions", CurrentWeather)
         attempts += current_calls

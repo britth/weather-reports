@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './current_hurricane.rb'
+require '../current_hurricane.rb'
 
 class CurrentHurricaneTest < Minitest::Test
   def setup

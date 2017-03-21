@@ -1,11 +1,11 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './alert.rb'
+require '../ten_day_forecast.rb'
 
-class AlertTest < Minitest::Test
+class TenDayForecastTest < Minitest::Test
   def setup
-    @valid_report = Alert.find('27713')
-    @invalid_report = Alert.find('00000')
+    @valid_report = TenDayForecast.find('27713')
+    @invalid_report = TenDayForecast.find('00000')
   end
 
   def test_initialize
@@ -29,11 +29,11 @@ class AlertTest < Minitest::Test
     assert_equal("Durham", @valid_report.city)
   end
 
-  def test_invalid_zip_code_alert_count_is_null
-    assert_nil(@invalid_report.alert_count)
+  def test_invalid_zip_code_first_forecast_is_null
+    assert_nil(@invalid_report.period_1_forecast)
   end
 
-  def test_valid_zip_code_alert_count_is_not_null
-    refute_nil(@valid_report.alert_count)
+  def test_valid_zip_code_first_forecast_is_not_null
+    refute_nil(@valid_report.period_1_forecast)
   end
 end

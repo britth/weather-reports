@@ -1,11 +1,11 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './current_weather.rb'
+require '../alert.rb'
 
-class CurrentWeatherTest < Minitest::Test
+class AlertTest < Minitest::Test
   def setup
-    @valid_report = CurrentWeather.find('27713')
-    @invalid_report = CurrentWeather.find('00000')
+    @valid_report = Alert.find('27713')
+    @invalid_report = Alert.find('00000')
   end
 
   def test_initialize
@@ -27,5 +27,13 @@ class CurrentWeatherTest < Minitest::Test
 
   def test_valid_zip_code_city_is_not_null
     assert_equal("Durham", @valid_report.city)
+  end
+
+  def test_invalid_zip_code_alert_count_is_null
+    assert_nil(@invalid_report.alert_count)
+  end
+
+  def test_valid_zip_code_alert_count_is_not_null
+    refute_nil(@valid_report.alert_count)
   end
 end

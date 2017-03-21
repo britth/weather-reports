@@ -1,5 +1,5 @@
 require 'httparty'
-require './narrative.rb'
+require_relative './narrative.rb'
 
 class TenDayForecast
   include HTTParty

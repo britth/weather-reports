@@ -1,5 +1,5 @@
 require 'httparty'
-require './narrative.rb'
+require_relative './narrative.rb'
 
 class CurrentHurricane
   include HTTParty
@@ -13,5 +13,4 @@ class CurrentHurricane
   def narrative
     Narrative.hurricanes(self)
   end
-
 end
