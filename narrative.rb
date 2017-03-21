@@ -12,19 +12,19 @@ module Narrative
   end
 
   def current(data)
-    "Weather Report for #{data.city}, #{data.state} #{data.zip} (#{data.obs_time}):\nConditions are #{data.weather.downcase}, with a current temperature of #{data.temperature}.#{rain_sentence(data)} Winds are #{data.wind.downcase}."
+    "\nWeather Report for #{data.city}, #{data.state} #{data.zip} (#{data.obs_time}):\nConditions are #{data.weather.downcase}, with a current temperature of #{data.temperature}.#{rain_sentence(data)} Winds are #{data.wind.downcase}."
   end
 
   def ten_day(data)
-    "10 Day Forecast for #{data.city}, #{data.state} (As of #{data.date}):\n\n#{data.period_1_day}: #{data.period_1_forecast}\n#{data.period_2_day}: #{data.period_2_forecast}\n#{data.period_3_day}: #{data.period_3_forecast}\n#{data.period_4_day}: #{data.period_4_forecast}\n#{data.period_5_day}: #{data.period_5_forecast}\n#{data.period_6_day}: #{data.period_6_forecast}\n#{data.period_7_day}: #{data.period_7_forecast}\n#{data.period_8_day}: #{data.period_8_forecast}\n#{data.period_9_day}: #{data.period_9_forecast}\n#{data.period_10_day}: #{data.period_10_forecast}"
+    "\n10 Day Forecast for #{data.city}, #{data.state} (As of #{data.date}):\n\n#{data.period_1_day}: #{data.period_1_forecast}\n#{data.period_2_day}: #{data.period_2_forecast}\n#{data.period_3_day}: #{data.period_3_forecast}\n#{data.period_4_day}: #{data.period_4_forecast}\n#{data.period_5_day}: #{data.period_5_forecast}\n#{data.period_6_day}: #{data.period_6_forecast}\n#{data.period_7_day}: #{data.period_7_forecast}\n#{data.period_8_day}: #{data.period_8_forecast}\n#{data.period_9_day}: #{data.period_9_forecast}\n#{data.period_10_day}: #{data.period_10_forecast}"
   end
 
   def astronomy(data)
-    "Sunrise and Sunset Times for #{data.city}, #{data.state}:\n\nThe sunrise time is projected to be #{data.sunrise_hr}:#{data.sunrise_min}, and sunset is projected at #{data.sunset_hr}:#{data.sunset_min}"
+    "\nSunrise and Sunset Times for #{data.city}, #{data.state}:\n\nThe sunrise time is projected to be #{data.sunrise_hr}:#{data.sunrise_min}, and sunset is projected at #{data.sunset_hr}:#{data.sunset_min}"
   end
 
   def alerts(data)
-    puts "Current alerts for #{data.city}, #{data.state}"
+    puts "\nCurrent alerts for #{data.city}, #{data.state}"
     if data.alert_count == 0
       "There are no alerts to report."
     elsif data.alert_count > 0

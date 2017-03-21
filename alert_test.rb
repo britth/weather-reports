@@ -1,11 +1,11 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './alerts.rb'
+require './alert.rb'
 
-class AlertsTest < Minitest::Test
+class AlertTest < Minitest::Test
   def setup
-    @valid_report = Alerts.find('27713')
-    @invalid_report = Alerts.find('00000')
+    @valid_report = Alert.find('27713')
+    @invalid_report = Alert.find('00000')
   end
 
   def test_initialize

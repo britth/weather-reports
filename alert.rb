@@ -1,7 +1,7 @@
 require 'httparty'
 require './narrative.rb'
 
-class Alerts
+class Alert
   include HTTParty
 
   attr_accessor :zip, :city, :state, :alert_count, :top_alert_type, :top_alert_message, :error
