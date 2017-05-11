@@ -1,11 +1,12 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-require '../astronomy.rb'
+# require 'minitest/autorun'
+# require 'minitest/pride'
+require_relative 'test_helper'
+require_relative '../weather_data/astronomy'
 
 class AstronomyTest < Minitest::Test
   def setup
-    @valid_report = Astronomy.find('27713')
-    @invalid_report = Astronomy.find('00000')
+    @valid_report = WeatherData::Astronomy.find('27713')
+    @invalid_report = WeatherData::Astronomy.find('00000')
   end
 
   def test_initialize
@@ -35,5 +36,5 @@ class AstronomyTest < Minitest::Test
 
   def test_valid_zip_code_sunset_min_is_not_null
     refute_nil(@valid_report.sunset_min)
-  # end
+  end
 end

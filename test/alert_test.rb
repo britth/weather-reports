@@ -1,11 +1,12 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-require '../alert.rb'
+# require 'minitest/autorun'
+# require 'minitest/pride'
+require_relative 'test_helper'
+require_relative '../weather_data/alert'
 
 class AlertTest < Minitest::Test
   def setup
-    @valid_report = Alert.find('27713')
-    @invalid_report = Alert.find('00000')
+    @valid_report = WeatherData::Alert.find('27713')
+    @invalid_report = WeatherData::Alert.find('00000')
   end
 
   def test_initialize

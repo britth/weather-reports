@@ -1,11 +1,12 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-require '../ten_day_forecast.rb'
+# require 'minitest/autorun'
+# require 'minitest/pride'
+require_relative 'test_helper'
+require_relative '../weather_data/ten_day_forecast.rb'
 
 class TenDayForecastTest < Minitest::Test
   def setup
-    @valid_report = TenDayForecast.find('27713')
-    @invalid_report = TenDayForecast.find('00000')
+    @valid_report = WeatherData::TenDayForecast.find('27713')
+    @invalid_report = WeatherData::TenDayForecast.find('00000')
   end
 
   def test_initialize

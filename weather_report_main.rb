@@ -1,8 +1,9 @@
-require './current_weather.rb'
-require './ten_day_forecast.rb'
-require './astronomy.rb'
-require './alert.rb'
-require './current_hurricane.rb'
+require_relative 'weather_data/current_weather'
+require_relative 'weather_data/ten_day_forecast'
+require_relative 'weather_data/astronomy'
+require_relative 'weather_data/alert'
+require_relative 'weather_data/current_hurricane'
+require 'byebug'
 
 class WeatherReportMain
 
@@ -25,7 +26,6 @@ class WeatherReportMain
         zip = gets.chomp
         response = reportClass.find(zip)
         attempts += 1
-        #puts response.error
       elsif not response.error.nil? and attempts == 3
         puts "Sorry: #{response.error}. Try again in a few minutes."
         attempts += 1
@@ -70,29 +70,26 @@ class WeatherReportMain
         puts "That's not a valid request. Enter \"1\" for current conditions, \"2\" for a 10-day forecast, \"3\" for sunrise/sunset times, \"4\" for active alerts, \"5\" for active hurricanes, or \"0\" to quit"
         report_type = request_limit(attempts)
       elsif report_type == "1"
-        current_calls = specific_report_type("report of current weather conditions", CurrentWeather)
+        current_calls = specific_report_type("report of current weather conditions", WeatherData::CurrentWeather)
         attempts += current_calls
         report_type = request_limit(attempts)
       elsif report_type == "2"
-        ten_day_calls = specific_report_type("10-Day weather forecast", TenDayForecast)
+        ten_day_calls = specific_report_type("10-Day weather forecast", WeatherData::TenDayForecast)
         attempts += ten_day_calls
         report_type = request_limit(attempts)
       elsif report_type == "3"
-        astronomy_calls = specific_report_type("projection of sunrise and sunset times", Astronomy)
+        astronomy_calls = specific_report_type("projection of sunrise and sunset times", WeatherData::Astronomy)
         attempts += astronomy_calls
         report_type = request_limit(attempts)
       elsif report_type == "4"
-        alert_calls = specific_report_type("list of active alerts", Alert)
+        alert_calls = specific_report_type("list of active alerts", WeatherData::Alert)
         attempts += alert_calls
         report_type = request_limit(attempts)
       elsif report_type == "5"
-        CurrentHurricane.new.narrative
+        WeatherData::CurrentHurricane.new.narrative
         attempts += 1
         report_type = request_limit(attempts)
       end
     end
   end
 end
-
-weather_report = WeatherReportMain.new
-weather_report.request_weather_reports

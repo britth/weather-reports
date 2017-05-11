@@ -1,10 +1,11 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-require '../current_hurricane.rb'
+# require 'minitest/autorun'
+# require 'minitest/pride'
+require_relative 'test_helper'
+require_relative '../weather_data/current_hurricane.rb'
 
 class CurrentHurricaneTest < Minitest::Test
   def setup
-    @current_hurricane = CurrentHurricane.new
+    @current_hurricane = WeatherData::CurrentHurricane.new
   end
 
   def test_initialize
